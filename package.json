@@ -1,0 +1,8 @@
+{
+  "name": "lifevillage",
+  "version": "0.1",
+  "description": "To be announced",
+  "main": "server.js",
+  "author": "Joonas Nousiainen",
+  "license": "MIT"
+}
