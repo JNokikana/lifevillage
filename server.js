@@ -3,7 +3,7 @@ const Path = require('path');
 const Hapi = require('hapi');
 
 const Server = new Hapi.Server({
-    port: 80,
+    port: process.env.PORT,
     routes: {
         files: {
             relativeTo: Path.join(__dirname, 'webapp/public')
