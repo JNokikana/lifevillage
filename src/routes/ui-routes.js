@@ -6,19 +6,12 @@ exports.plugin = {
         server.route(
             {
                 method: "GET",
-                path: "/assets/{filename*}",
-                handler: {
-                    directory: {
-                        path: "assets",
-                        listing: true
-                    }
-                }
-            },
-            {
-                method: "GET",
                 path: "/{params*}",
                 handler: {
-                    file: "index.html"
+                    directory: {
+                        path: "./",
+                        index: "index.html"
+                    }
                 }
             })
     }
