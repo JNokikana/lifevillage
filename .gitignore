@@ -5,3 +5,4 @@ app.env
 app.js
 yarn-error.log
 *.lock
+.DS_Store
