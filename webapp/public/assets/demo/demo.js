@@ -1,48 +1,53 @@
 import Phaser from 'phaser';
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'demo', { preload: preload, create: create, update: update });
+var config = {
+    type: Phaser.AUTO,
+    parent: 'demo',
+    width: 800,
+    height: 600,
+    scene: {
+        preload: preload,
+        create: create
+    }
+};
 
-function preload() {
+var game = new Phaser.Game(config);
 
-    game.load.image('atari', './atari.png');
-    game.load.image('raster', './pink-raster.png');
-    game.load.image('floor', './checker-floor.png');
-
+function preload ()
+{
+    this.load.image('raster', 'assets/demo/raster-bw-64.png');
 }
 
-var effect;
-var image;
-var mask = new Phaser.Rectangle();
+function create ()
+{
+    var group = this.add.group();
 
-function create() {
+    group.createMultiple({ key: 'raster', repeat: 8 });
 
-    game.stage.backgroundColor = '#000042';
+    var ci = 0;
+    var colors = [ 0xef658c, 0xff9a52, 0xffdf00, 0x31ef8c, 0x21dfff, 0x31aade, 0x5275de, 0x9c55ad, 0xbd208c ];
 
-    var floor = game.add.image(0, game.height, 'floor');
-    floor.width = 800;
-    floor.anchor.y = 1;
+    var _this = this;
 
-    effect = game.make.bitmapData();
-    effect.load('atari');
+    group.children.iterate(function (child) {
 
-    image = game.add.image(game.world.centerX, game.world.centerY, effect);
-    image.anchor.set(0.5);
-    image.smoothed = false;
+        child.x = 100;
+        child.y = 300;
+        child.depth = 9 - ci;
 
-    mask.setTo(0, 0, effect.width, game.cache.getImage('raster').height);
+        child.tint = colors[ci];
 
-    //  Tween the rasters
-    game.add.tween(mask).to( { y: -(mask.height - effect.height) }, 3000, Phaser.Easing.Sinusoidal.InOut, true, 0, 100, true);
+        ci++;
 
-    //  Tween the image
-    game.add.tween(image.scale).to( { x: 4, y: 4 }, 3000, Phaser.Easing.Quartic.InOut, true, 0, 100, true);
+        _this.tweens.add({
+            targets: child,
+            x: 700,
+            yoyo: true,
+            repeat: -1,
+            ease: 'Sine.easeInOut',
+            duration: 1500,
+            delay: 100 * ci
+        });
 
-}
-
-function update() {
-
-    effect.alphaMask('raster', effect, mask);
-
-    image.rotation += 0.01;
-
+    });
 }
