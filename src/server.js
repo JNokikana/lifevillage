@@ -14,8 +14,8 @@ const Server = new Hapi.Server({
 async function initServer() {
     await Server.register(require("inert"));
     await Server.register([
-        require("./src/routes/ui-routes.js"),
-        require("./src/routes/app-routes.js")
+        require("./routes/ui-routes.js"),
+        require("./routes/app-routes.js")
     ]);
 
     await Server.start();
