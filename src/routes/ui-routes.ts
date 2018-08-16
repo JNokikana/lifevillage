@@ -3,7 +3,7 @@ const Path = require('path');
 exports.plugin = {
     name: "ui-routes",
     version: "1.0.0",
-    register: async function (server, options) {
+    register: async function (server: any, options: any) {
         server.route([
             {
                 method: "GET",
@@ -13,12 +13,6 @@ exports.plugin = {
                         path: "./",
                         index: ["index.html"]
                     }
-                }
-            }            ,{
-                method: "GET",
-                path: "/demo",
-                handler: (request, reply) => {
-                    return reply.file("demo.html");
                 }
             }
         ])

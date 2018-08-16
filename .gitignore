@@ -6,3 +6,5 @@ app.js
 yarn-error.log
 *.lock
 .DS_Store
+build
+webapp/public/build

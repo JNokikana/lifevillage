@@ -1,7 +1,7 @@
 module.exports = {
-    entry: ["babel-polyfill", "./src/webapp/public/index.jsx"],
+    entry: ["babel-polyfill", "./webapp/public/index.jsx"],
     output: {
-        path: __dirname + "/src/webapp/public/assets/build",
+        path: __dirname + "/webapp/public/build",
         filename: 'app.js'
     },
     devtool: "inline-source-map",
