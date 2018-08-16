@@ -1,3 +1,3 @@
 # LifeVillage
 
-An experimental project with phaser.js.
+An experimental project visualized with phaserJS.
