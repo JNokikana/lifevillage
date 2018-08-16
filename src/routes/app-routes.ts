@@ -8,7 +8,7 @@ exports.plugin = {
             {
                 method: "POST",
                 path: "/api/game/sync",
-                config:{
+                config: {
                     plugins: {
                         websocket: {
                             only: true,

@@ -14,7 +14,10 @@ const Server = new Hapi.Server({
 });
 
 async function initServer() {
-    await Server.register(require("inert"));
+    await Server.register([
+        require("inert"),
+        require('hapi-plugin-websocket')
+    ]);
     await Server.register([
         require("./routes/ui-routes.js"),
         require("./routes/app-routes.js")
