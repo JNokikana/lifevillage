@@ -1,4 +1,4 @@
-const Game = require('../handler/game.js');
+import * as Game from '../handler/game';
 
 exports.plugin = {
     name: "app-routes",

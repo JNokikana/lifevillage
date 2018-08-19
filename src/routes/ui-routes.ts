@@ -1,5 +1,3 @@
-const Path = require('path');
-
 exports.plugin = {
     name: "ui-routes",
     version: "1.0.0",
