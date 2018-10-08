@@ -4,6 +4,8 @@ dotenv.config({ path: "./app.env" });
 import * as Path from 'path';
 import * as Hapi from 'hapi';
 
+import Game from '../src/util/gamestate';
+
 const Server = new Hapi.Server({
     port: process.env.PORT,
     routes: {
@@ -24,6 +26,8 @@ async function initServer() {
     ]);
 
     await Server.start();
+
+    await Game.initSimulation();
 }
 
 initServer();
