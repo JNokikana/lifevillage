@@ -16,18 +16,23 @@ const Server = new Hapi.Server({
 });
 
 async function initServer() {
-    await Server.register([
-        require("inert"),
-        require('hapi-plugin-websocket')
-    ]);
-    await Server.register([
-        require("./routes/ui-routes.js"),
-        require("./routes/app-routes.js")
-    ]);
-
-    await Server.start();
-
-    await Game.initSimulation();
+    try{
+        await Server.register([
+            require("inert"),
+            require('hapi-plugin-websocket')
+        ]);
+        await Server.register([
+            require("./routes/ui-routes.js"),
+            require("./routes/app-routes.js")
+        ]);
+    
+        await Server.start();
+    
+        await Game.initSimulation();
+    }catch(error){
+        console.log(error);
+        process.exit(1);
+    }
 }
 
 initServer();
