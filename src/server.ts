@@ -4,7 +4,7 @@ dotenv.config({ path: "./app.env" });
 import * as Path from 'path';
 import * as Hapi from 'hapi';
 
-import Game from '../src/util/gamestate';
+import Game from './util/gamestate';
 
 const Server = new Hapi.Server({
     port: process.env.PORT,

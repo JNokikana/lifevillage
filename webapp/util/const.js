@@ -1,3 +1,3 @@
 export default {
-    API_PATH: "ws://localhost:8081/api/game/sync"
+    API_SOCKET_PATH: "ws://localhost:8081/api/game/sync"
 }

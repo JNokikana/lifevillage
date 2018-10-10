@@ -1,5 +1,4 @@
 import fs from 'fs';
-import Const from './const';
 import MapTile from '../entity/maptile';
 
 class GameState {
@@ -10,18 +9,19 @@ class GameState {
         let mapSquareSize = parseInt(process.env.MAP_SQUARE_SIZE || "0");
         let mapSquares = parseInt(process.env.MAP_SQUARES || "0");
 
-        for (var i = 0; i < mapSquares; i += mapSquareSize) {
-            for (var m = 0; m < mapSquares; m += mapSquareSize) {
+        for (var i = 0; i <= mapSquares; i += mapSquareSize) {
+            for (var m = 0; m <= mapSquares; m += mapSquareSize) {
+                console.log("X: " + i + " " + "Y: " + m);
                 mapArray.push(new MapTile({
                     x: i,
                     y: m
-                }))
+                }));
             }
         }
     }
 
     async generateVillagers() {
-
+        
     }
 
     async initSimulation() {
@@ -30,7 +30,7 @@ class GameState {
             if (fs.existsSync("./" + process.env.STATE_FILENAME)) {
                 this.stateJSON = fs.readFileSync("./" + process.env.STATE_FILENAME).toJSON();
             }
-
+            await this.generateMap();
 
         } catch (error) {
             throw error;

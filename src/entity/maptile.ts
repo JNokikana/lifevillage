@@ -1,5 +1,4 @@
 import Entity from './entity';
-import Nameable from '../component/nameable';
 import Placeable from '../component/placeable';
 
 interface IConstructor {
