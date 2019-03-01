@@ -1,5 +1,6 @@
 import fs from 'fs';
 import MapTile from '../entity/maptile';
+import Villager from '../entity/villager';
 
 class GameState {
     public stateJSON: any;
@@ -18,9 +19,11 @@ class GameState {
                 }));
             }
         }
+        this.stateJSON.map = mapArray;
     }
 
     async generateVillagers() {
+        let villager = new Villager({ name: "Pekka", x: 0, y: 0, speed: 0, hitpoints: 5 });
         
     }
 
